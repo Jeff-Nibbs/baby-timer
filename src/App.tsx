@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 function App() {
   const [currentTime, setCurrentTime] = useState('0')
+  const [dayTime, setDayTime] = useState('')
   const date = new Date()
 
   const padTo2Digits = (num: number) => {
@@ -9,7 +10,19 @@ function App() {
   }
 
   const setTime = () => {
-    setCurrentTime(padTo2Digits(date.getHours()) + ':' + padTo2Digits(date.getMinutes()) + ':' + padTo2Digits(date.getSeconds()))
+    setCurrentTime(
+      padTo2Digits(date.getHours() < 12 ? date.getHours() : date.getHours() - 12) +
+        ':' +
+        padTo2Digits(date.getMinutes()) +
+        ':' +
+        padTo2Digits(date.getSeconds())
+    )
+
+    if (date.getHours() < 12) {
+      setDayTime('AM')
+    } else {
+      setDayTime('PM')
+    }
   }
   return (
     <>
@@ -17,7 +30,9 @@ function App() {
       <button type="button" onClick={() => setTime()}>
         Get Time
       </button>
-      <p>{currentTime.toLocaleString()}</p>
+      <p>
+        {currentTime.toLocaleString()} {dayTime}
+      </p>
     </>
   )
 }
