@@ -3,11 +3,31 @@ import { DateTime } from 'luxon'
 
 function App() {
   const [currentTime, setCurrentTime] = useState('0')
+  const [daySchedule, setDaySchedule] = useState({})
 
   const setTime = () => {
     const dt = DateTime.now()
-    setCurrentTime(dt)
+    const now = dt.toLocaleString(DateTime.TIME_SIMPLE)
+    setCurrentTime(now)
+
+    const wakeTime = dt.plus({ hours: 12 })
+    const firstNapDown = wakeTime.plus({ hours: 1.5 })
+    const firstNapUp = firstNapDown.plus({ hours: 1.5 })
+    const secondNapDown = firstNapUp.plus({ hours: 1.5 })
+    const secondNapUp = secondNapDown.plus({ hours: 1.5 })
+
+    console.log(firstNapDown.toLocaleString(DateTime.TIME_SIMPLE))
+
+    setDaySchedule({
+      wakeTime: wakeTime.toLocaleString(DateTime.TIME_SIMPLE),
+      firstNapDown: firstNapDown.toLocaleString(DateTime.TIME_SIMPLE),
+      firstNapUp: firstNapUp.toLocaleString(DateTime.TIME_SIMPLE),
+      secondNapDown: secondNapDown.toLocaleString(DateTime.TIME_SIMPLE),
+      secondNapUp: secondNapUp.toLocaleString(DateTime.TIME_SIMPLE),
+    })
   }
+  console.log(daySchedule)
+
   return (
     <>
       <h1 className="text-3xl font-bold underline">Press If Baby Began Night Sleep Cycle</h1>
