@@ -3,7 +3,22 @@ import { DateTime } from 'luxon'
 
 function App() {
   const [currentTime, setCurrentTime] = useState('0')
-  const [daySchedule, setDaySchedule] = useState({})
+  const [daySchedule, setDaySchedule] = useState({
+    firstNapDown: '',
+    firstNapUp: '',
+    firstFeed: '',
+    secondNapDown: '',
+    secondNapUp: '',
+    secondFeed: '',
+    thirdNapDown: '',
+    thirdNapUp: '',
+    thirdFeed: '',
+    fourthNapDown: '',
+    fourthNapUp: '',
+    fourthFeed: '',
+    finalSleep: '',
+    wakeUp: '',
+  })
   const [showSchedule, setShowSchedule] = useState(false)
 
   const setTime = () => {
@@ -69,20 +84,20 @@ function App() {
       {showSchedule && (
         <div className="mt-5">
           <h2 className="text-2xl font-bold underline">{currentTime.plus({ hours: 12 }).toLocaleString(DateTime.DATE_FULL)} Schedule</h2>
-          <p className="text-xl font-bold">Wake Up: {daySchedule.wakeUp}</p>
-          <p className="text-xl font-bold">First Nap Down: {daySchedule.firstNapDown}</p>
-          <p className="text-xl font-bold">First Nap Up: {daySchedule.firstNapUp}</p>
-          <p className="text-xl font-bold">First Feed: {daySchedule.firstFeed}</p>
-          <p className="text-xl font-bold">Second Nap Down: {daySchedule.secondNapDown}</p>
-          <p className="text-xl font-bold">Second Nap Up: {daySchedule.secondNapUp}</p>
-          <p className="text-xl font-bold">Second Feed: {daySchedule.secondFeed}</p>
-          <p className="text-xl font-bold">Third Nap Down: {daySchedule.thirdNapDown}</p>
-          <p className="text-xl font-bold">Third Nap Up: {daySchedule.thirdNapUp}</p>
-          <p className="text-xl font-bold">Third Feed: {daySchedule.thirdFeed}</p>
-          <p className="text-xl font-bold">Fourth Nap Down: {daySchedule.fourthNapDown}</p>
-          <p className="text-xl font-bold">Fourth Nap Up: {daySchedule.fourthNapUp}</p>
-          <p className="text-xl font-bold">Fourth Feed: {daySchedule.fourthFeed}</p>
-          <p className="text-xl font-bold">Final Sleep: {daySchedule.finalSleep}</p>
+          <p className="text-xl font-medium">Wake Up: {daySchedule.wakeUp}</p>
+          <p className="text-xl font-medium">First Nap Down: {daySchedule.firstNapDown}</p>
+          <p className="text-xl font-medium">First Nap Up: {daySchedule.firstNapUp}</p>
+          <p className="text-xl font-medium">First Feed: {daySchedule.firstFeed}</p>
+          <p className="text-xl font-medium">Second Nap Down: {daySchedule.secondNapDown}</p>
+          <p className="text-xl font-medium">Second Nap Up: {daySchedule.secondNapUp}</p>
+          <p className="text-xl font-medium">Second Feed: {daySchedule.secondFeed}</p>
+          <p className="text-xl font-medium">Third Nap Down: {daySchedule.thirdNapDown}</p>
+          <p className="text-xl font-medium">Third Nap Up: {daySchedule.thirdNapUp}</p>
+          <p className="text-xl font-medium">Third Feed: {daySchedule.thirdFeed}</p>
+          <p className="text-xl font-medium">Fourth Nap Down: {daySchedule.fourthNapDown}</p>
+          <p className="text-xl font-medium">Fourth Nap Up: {daySchedule.fourthNapUp}</p>
+          <p className="text-xl font-medium">Fourth Feed: {daySchedule.fourthFeed}</p>
+          <p className="text-xl font-medium">Final Sleep: {daySchedule.finalSleep}</p>
         </div>
       )}
     </>
